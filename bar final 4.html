@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Giacenze Bar Capasso</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f2f2f2;
+
+            color: #222;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #222;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px 10px;
+        }
+
+
+        header h1 {
+            margin: 0 0 15px 0;
+
+            font-size: 26px;
+        }
+
+
+        .reset-btn {
+            background: #ffc107;
+
+            color: #222;
+
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 10px 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .reset-btn:hover {
+            background: #e0a800;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 850px;
+
+            margin: 25px auto;
+
+            padding: 0 15px;
+        }
+
+
+        /* =========================
+           CATEGORIE
+        ========================= */
+
+        .categoria {
+            margin-bottom: 30px;
+        }
+
+
+        .categoria h2 {
+            font-size: 21px;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================
+           PRODOTTO
+        ========================= */
+
+        .prodotto {
+            background: white;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+            margin-bottom: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            box-shadow:
+                0 2px 6px rgba(0,0,0,0.08);
+        }
+
+
+        .info-prodotto {
+            flex: 1;
+
+            min-width: 120px;
+        }
+
+
+        .nome {
+            font-size: 18px;
+
+            font-weight: bold;
+
+            margin-bottom: 5px;
+        }
+
+
+        .prezzo {
+            color: #198754;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .azioni {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+        }
+
+
+        .iniziale {
+            color: #777;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        .modifica {
+            width: 30px;
+
+            height: 30px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #e9ecef;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        .modifica:hover {
+            background: #dee2e6;
+        }
+
+
+        .controlli {
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+        }
+
+
+        .controlli button {
+            width: 40px;
+
+            height: 40px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            color: white;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .controlli button:active {
+            transform: scale(0.92);
+        }
+
+
+        .meno {
+            background: #dc3545;
+        }
+
+
+        .piu {
+            background: #198754;
+        }
+
+
+        .quantita {
+            width: 40px;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+
+        .vendute {
+            color: #777;
+
+            font-size: 13px;
+
+            min-width: 65px;
+
+            text-align: center;
+        }
+
+
+        .vendute strong {
+            color: #dc3545;
+
+            font-size: 15px;
+        }
+
+
+        .incasso {
+            min-width: 75px;
+
+            text-align: right;
+
+            font-weight: bold;
+
+            color: #198754;
+        }
+
+
+        .elimina {
+            width: 30px !important;
+
+            height: 30px !important;
+
+            background: #dc3545 !important;
+
+            font-size: 15px !important;
+        }
+
+
+        /* =========================
+           AGGIUNGI
+        ========================= */
+
+        .aggiungi-container {
+            text-align: center;
+
+            margin: 30px 0;
+        }
+
+
+        .btn-aggiungi {
+            background: #0d6efd;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding: 13px 22px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .btn-aggiungi:hover {
+            background: #0b5ed7;
+        }
+
+
+        /* =========================
+           RIEPILOGO
+        ========================= */
+
+        .riepilogo {
+            background: #222;
+
+            color: white;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            margin-top: 35px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .riepilogo h2 {
+            margin-top: 0;
+
+            text-align: center;
+
+            font-size: 22px;
+        }
+
+
+        .riepilogo-riga {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 9px 0;
+
+            border-bottom: 1px solid #444;
+
+            font-size: 15px;
+        }
+
+
+        .riepilogo-riga:last-child {
+            border-bottom: none;
+        }
+
+
+        .totale {
+            font-size: 22px;
+
+            font-weight: bold;
+
+            color: #ffc107;
+
+            margin-top: 12px;
+
+            padding-top: 15px;
+
+            border-top: 2px solid #555;
+        }
+
+
+        /* =========================
+           POPUP
+        ========================= */
+
+        .popup {
+            display: none;
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: rgba(0,0,0,0.5);
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 1000;
+        }
+
+
+        .popup-box {
+            background: white;
+
+            width: 100%;
+
+            max-width: 420px;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.3);
+        }
+
+
+        .popup-box h2 {
+            margin-top: 0;
+
+            margin-bottom: 20px;
+        }
+
+
+        .campo {
+            margin-bottom: 15px;
+        }
+
+
+        .campo label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            font-weight: bold;
+        }
+
+
+        .campo input,
+        .campo select {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+        }
+
+
+        .popup-buttons {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+
+        .popup-buttons button {
+            flex: 1;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .salva {
+            background: #198754;
+
+            color: white;
+        }
+
+
+        .annulla {
+            background: #6c757d;
+
+            color: white;
+        }
+
+
+        .footer {
+            text-align: center;
+
+            color: #777;
+
+            font-size: 13px;
+
+            padding: 20px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .prodotto {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .azioni {
+                justify-content: flex-start;
+            }
+
+
+            .incasso {
+                min-width: auto;
+
+                text-align: left;
+            }
+
+
+            .vendute {
+                min-width: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>🍺 Giacenze Bar Capasso</h1>
+
+
+    <button
+        class="reset-btn"
+        onclick="resetGiornata()">
+
+        🔄 Reset giornata
+
+    </button>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <!-- PRODOTTI -->
+
+    <div id="lista-prodotti"></div>
+
+
+
+    <!-- RIEPILOGO -->
+
+    <div class="riepilogo">
+
+        <h2>💰 Riepilogo giornata</h2>
+
+
+        <div class="riepilogo-riga">
+
+            <span>🍺 Birre</span>
+
+            <strong id="totale-birre">
+                €0,00
+            </strong>
+
+        </div>
+
+
+        <div class="riepilogo-riga">
+
+            <span>🥤 Bibite</span>
+
+            <strong id="totale-bibite">
+                €0,00
+            </strong>
+
+        </div>
+
+
+        <div class="riepilogo-riga">
+
+            <span>💧 Acqua</span>
+
+            <strong id="totale-acqua">
+                €0,00
+            </strong>
+
+        </div>
+
+
+        <div class="riepilogo-riga">
+
+            <span>📦 Altro</span>
+
+            <strong id="totale-altro">
+                €0,00
+            </strong>
+
+        </div>
+
+
+        <div class="riepilogo-riga">
+
+            <span>📦 Prodotti venduti</span>
+
+            <strong id="totale-pezzi">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="riepilogo-riga totale">
+
+            <span>💰 TOTALE CASSA</span>
+
+            <strong id="totale-cassa">
+                €0,00
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- AGGIUNGI PRODOTTO -->
+
+    <div class="aggiungi-container">
+
+        <button
+            class="btn-aggiungi"
+            onclick="apriPopup()">
+
+            ＋ Aggiungi prodotto
+
+        </button>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="footer">
+
+    Le giacenze vengono salvate automaticamente.
+
+</div>
+
+
+
+<!-- ==================================
+     POPUP NUOVO PRODOTTO
+================================== -->
+
+<div
+    class="popup"
+    id="popup">
+
+    <div class="popup-box">
+
+        <h2>➕ Nuovo prodotto</h2>
+
+
+        <div class="campo">
+
+            <label>
+                Nome prodotto
+            </label>
+
+            <input
+                type="text"
+                id="nomeProdotto"
+                placeholder="Es. Pepsi">
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Categoria
+            </label>
+
+            <select id="categoriaProdotto">
+
+                <option value="Birre">
+                    🍺 Birre
+                </option>
+
+                <option value="Bibite" selected>
+                    🥤 Bibite
+                </option>
+
+                <option value="Acqua">
+                    💧 Acqua
+                </option>
+
+                <option value="Altro">
+                    📦 Altro
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Quantità iniziale
+            </label>
+
+            <input
+                type="number"
+                id="quantitaProdotto"
+                value="0"
+                min="0">
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Prezzo di vendita (€)
+            </label>
+
+            <input
+                type="number"
+                id="prezzoProdotto"
+                value="0"
+                min="0"
+                step="0.01"
+                placeholder="Es. 3.00">
+
+        </div>
+
+
+        <div class="popup-buttons">
+
+            <button
+                class="annulla"
+                onclick="chiudiPopup()">
+
+                Annulla
+
+            </button>
+
+
+            <button
+                class="salva"
+                onclick="aggiungiProdotto()">
+
+                Aggiungi
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================
+     POPUP MODIFICA
+================================== -->
+
+<div
+    class="popup"
+    id="popupModifica">
+
+    <div class="popup-box">
+
+        <h2>✏️ Modifica prodotto</h2>
+
+
+        <p id="nomeModifica"></p>
+
+
+        <div class="campo">
+
+            <label>
+                Quantità iniziale
+            </label>
+
+            <input
+                type="number"
+                id="nuovaIniziale"
+                min="0">
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Prezzo di vendita (€)
+            </label>
+
+            <input
+                type="number"
+                id="nuovoPrezzo"
+                min="0"
+                step="0.01">
+
+        </div>
+
+
+        <div class="popup-buttons">
+
+            <button
+                class="annulla"
+                onclick="chiudiModifica()">
+
+                Annulla
+
+            </button>
+
+
+            <button
+                class="salva"
+                onclick="salvaModifica()">
+
+                Salva
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* ==================================
+   PRODOTTI INIZIALI
+================================== */
+
+let prodotti = [
+
+    {
+        nome: "Dreher",
+        categoria: "Birre",
+        quantita: 12,
+        iniziale: 12,
+        prezzo: 4.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Beck's",
+        categoria: "Birre",
+        quantita: 8,
+        iniziale: 8,
+        prezzo: 4.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Heineken",
+        categoria: "Birre",
+        quantita: 15,
+        iniziale: 15,
+        prezzo: 4.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Peroni",
+        categoria: "Birre",
+        quantita: 10,
+        iniziale: 10,
+        prezzo: 4.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Coca-Cola",
+        categoria: "Bibite",
+        quantita: 20,
+        iniziale: 20,
+        prezzo: 3.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Coca-Cola Zero",
+        categoria: "Bibite",
+        quantita: 12,
+        iniziale: 12,
+        prezzo: 3.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Fanta",
+        categoria: "Bibite",
+        quantita: 14,
+        iniziale: 14,
+        prezzo: 3.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Sprite",
+        categoria: "Bibite",
+        quantita: 10,
+        iniziale: 10,
+        prezzo: 3.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Schweppes Tonica",
+        categoria: "Bibite",
+        quantita: 8,
+        iniziale: 8,
+        prezzo: 3.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Red Bull",
+        categoria: "Bibite",
+        quantita: 15,
+        iniziale: 15,
+        prezzo: 4.00,
+        personalizzato: false
+    },
+
+    {
+        nome: "Acqua Naturale",
+        categoria: "Acqua",
+        quantita: 30,
+        iniziale: 30,
+        prezzo: 1.50,
+        personalizzato: false
+    },
+
+    {
+        nome: "Acqua Frizzante",
+        categoria: "Acqua",
+        quantita: 25,
+        iniziale: 25,
+        prezzo: 1.50,
+        personalizzato: false
+    }
+
+];
+
+
+
+/* ==================================
+   CARICAMENTO DATI
+================================== */
+
+const datiSalvati =
+    localStorage.getItem("prodottiBar");
+
+
+if (datiSalvati !== null) {
+
+    try {
+
+        const dati =
+            JSON.parse(datiSalvati);
+
+
+        if (Array.isArray(dati)) {
+
+            prodotti = dati;
+
+        }
+
+    }
+
+    catch (errore) {
+
+        console.log(
+            "Errore caricamento dati."
+        );
+
+    }
+
+}
+
+
+/* Compatibilità con vecchi prodotti */
+
+prodotti.forEach(prodotto => {
+
+    if (
+        prodotto.iniziale === undefined
+    ) {
+
+        prodotto.iniziale =
+            prodotto.quantita;
+
+    }
+
+
+    if (
+        prodotto.prezzo === undefined
+    ) {
+
+        prodotto.prezzo = 0;
+
+    }
+
+
+    if (
+        prodotto.personalizzato === undefined
+    ) {
+
+        prodotto.personalizzato = true;
+
+    }
+
+});
+
+
+
+/* ==================================
+   SALVA
+================================== */
+
+function salva() {
+
+    localStorage.setItem(
+        "prodottiBar",
+        JSON.stringify(prodotti)
+    );
+
+}
+
+
+
+/* ==================================
+   FORMATTA EURO
+================================== */
+
+function euro(valore) {
+
+    return valore.toLocaleString(
+        "it-IT",
+        {
+            style: "currency",
+            currency: "EUR"
+        }
+    );
+
+}
+
+
+
+/* ==================================
+   MOSTRA PRODOTTI
+================================== */
+
+function mostraProdotti() {
+
+
+    const lista =
+        document.getElementById(
+            "lista-prodotti"
+        );
+
+
+    lista.innerHTML = "";
+
+
+    const categorie = [
+        "Birre",
+        "Bibite",
+        "Acqua",
+        "Altro"
+    ];
+
+
+    categorie.forEach(categoria => {
+
+
+        const prodottiCategoria =
+            prodotti.filter(
+                prodotto =>
+                    prodotto.categoria ===
+                    categoria
+            );
+
+
+        if (
+            prodottiCategoria.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        const sezione =
+            document.createElement("div");
+
+
+        sezione.className =
+            "categoria";
+
+
+        let titolo;
+
+
+        if (categoria === "Birre") {
+
+            titolo = "🍺 Birre";
+
+        }
+
+        else if (categoria === "Bibite") {
+
+            titolo = "🥤 Bibite";
+
+        }
+
+        else if (categoria === "Acqua") {
+
+            titolo = "💧 Acqua";
+
+        }
+
+        else {
+
+            titolo = "📦 Altro";
+
+        }
+
+
+        sezione.innerHTML =
+            `<h2>${titolo}</h2>`;
+
+
+        prodottiCategoria.forEach(
+            prodotto => {
+
+
+                const indice =
+                    prodotti.indexOf(
+                        prodotto
+                    );
+
+
+                const vendute =
+                    Math.max(
+                        0,
+                        prodotto.iniziale -
+                        prodotto.quantita
+                    );
+
+
+                const incasso =
+                    vendute *
+                    prodotto.prezzo;
+
+
+                const riga =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                riga.className =
+                    "prodotto";
+
+
+                riga.innerHTML = `
+
+                    <div class="info-prodotto">
+
+                        <div class="nome">
+                            ${prodotto.nome}
+                        </div>
+
+                        <div class="prezzo">
+                            ${euro(prodotto.prezzo)}
+                        </div>
+
+                    </div>
+
+
+                    <div class="azioni">
+
+
+                        <span class="iniziale">
+                            (${prodotto.iniziale})
+                        </span>
+
+
+                        <button
+                            class="modifica"
+                            onclick="apriModifica(${indice})"
+                            title="Modifica quantità e prezzo">
+
+                            ✏️
+
+                        </button>
+
+
+                        <div class="controlli">
+
+
+                            <button
+                                class="meno"
+                                onclick="modifica(${indice}, -1)">
+
+                                −
+
+                            </button>
+
+
+                            <span class="quantita">
+
+                                ${prodotto.quantita}
+
+                            </span>
+
+
+                            <button
+                                class="piu"
+                                onclick="modifica(${indice}, 1)">
+
+                                +
+
+                            </button>
+
+
+                            ${
+                                prodotto.personalizzato
+                                ?
+
+                                `<button
+                                    class="elimina"
+                                    onclick="eliminaProdotto(${indice})">
+
+                                    🗑
+
+                                </button>`
+
+                                :
+
+                                ""
+                            }
+
+
+                        </div>
+
+
+                        <span class="vendute">
+
+                            Vendute:
+                            <strong>
+                                ${vendute}
+                            </strong>
+
+                        </span>
+
+
+                        <span class="incasso">
+
+                            ${euro(incasso)}
+
+                        </span>
+
+
+                    </div>
+
+                `;
+
+
+                sezione.appendChild(
+                    riga
+                );
+
+            }
+        );
+
+
+        lista.appendChild(
+            sezione
+        );
+
+    });
+
+
+    aggiornaRiepilogo();
+
+}
+
+
+
+/* ==================================
+   MODIFICA GIACENZA
+================================== */
+
+function modifica(
+    indice,
+    valore
+) {
+
+
+    prodotti[indice].quantita +=
+        valore;
+
+
+    if (
+        prodotti[indice].quantita < 0
+    ) {
+
+        prodotti[indice].quantita = 0;
+
+    }
+
+
+    if (
+        prodotti[indice].quantita >
+        prodotti[indice].iniziale
+    ) {
+
+        prodotti[indice].quantita =
+            prodotti[indice].iniziale;
+
+    }
+
+
+    salva();
+
+    mostraProdotti();
+
+}
+
+
+
+/* ==================================
+   RIEPILOGO
+================================== */
+
+function aggiornaRiepilogo() {
+
+
+    let birre = 0;
+
+    let bibite = 0;
+
+    let acqua = 0;
+
+    let altro = 0;
+
+    let pezzi = 0;
+
+
+    prodotti.forEach(prodotto => {
+
+
+        const vendute =
+            Math.max(
+                0,
+                prodotto.iniziale -
+                prodotto.quantita
+            );
+
+
+        const incasso =
+            vendute *
+            prodotto.prezzo;
+
+
+        pezzi += vendute;
+
+
+        if (
+            prodotto.categoria === "Birre"
+        ) {
+
+            birre += incasso;
+
+        }
+
+        else if (
+            prodotto.categoria === "Bibite"
+        ) {
+
+            bibite += incasso;
+
+        }
+
+        else if (
+            prodotto.categoria === "Acqua"
+        ) {
+
+            acqua += incasso;
+
+        }
+
+        else {
+
+            altro += incasso;
+
+        }
+
+    });
+
+
+    const totale =
+        birre +
+        bibite +
+        acqua +
+        altro;
+
+
+    document.getElementById(
+        "totale-birre"
+    ).textContent =
+        euro(birre);
+
+
+    document.getElementById(
+        "totale-bibite"
+    ).textContent =
+        euro(bibite);
+
+
+    document.getElementById(
+        "totale-acqua"
+    ).textContent =
+        euro(acqua);
+
+
+    document.getElementById(
+        "totale-altro"
+    ).textContent =
+        euro(altro);
+
+
+    document.getElementById(
+        "totale-pezzi"
+    ).textContent =
+        pezzi;
+
+
+    document.getElementById(
+        "totale-cassa"
+    ).textContent =
+        euro(totale);
+
+}
+
+
+
+/* ==================================
+   RESET GIORNATA
+================================== */
+
+function resetGiornata() {
+
+
+    const conferma =
+        confirm(
+            "Vuoi iniziare una nuova giornata?\n\n" +
+            "Le giacenze torneranno alle quantità iniziali."
+        );
+
+
+    if (!conferma) {
+
+        return;
+
+    }
+
+
+    prodotti.forEach(prodotto => {
+
+        prodotto.quantita =
+            prodotto.iniziale;
+
+    });
+
+
+    salva();
+
+    mostraProdotti();
+
+}
+
+
+
+/* ==================================
+   MODIFICA PRODOTTO
+================================== */
+
+let indiceModifica = null;
+
+
+function apriModifica(indice) {
+
+
+    indiceModifica =
+        indice;
+
+
+    const prodotto =
+        prodotti[indice];
+
+
+    document.getElementById(
+        "nomeModifica"
+    ).textContent =
+        prodotto.nome;
+
+
+    document.getElementById(
+        "nuovaIniziale"
+    ).value =
+        prodotto.iniziale;
+
+
+    document.getElementById(
+        "nuovoPrezzo"
+    ).value =
+        prodotto.prezzo;
+
+
+    document.getElementById(
+        "popupModifica"
+    ).style.display =
+        "flex";
+
+}
+
+
+
+/* ==================================
+   SALVA MODIFICA
+================================== */
+
+function salvaModifica() {
+
+
+    if (
+        indiceModifica === null
+    ) {
+
+        return;
+
+    }
+
+
+    let nuovaIniziale =
+        parseInt(
+            document.getElementById(
+                "nuovaIniziale"
+            ).value
+        );
+
+
+    let nuovoPrezzo =
+        parseFloat(
+            document.getElementById(
+                "nuovoPrezzo"
+            ).value
+        );
+
+
+    if (
+        isNaN(nuovaIniziale) ||
+        nuovaIniziale < 0
+    ) {
+
+        alert(
+            "Inserisci una quantità valida."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        isNaN(nuovoPrezzo) ||
+        nuovoPrezzo < 0
+    ) {
+
+        nuovoPrezzo = 0;
+
+    }
+
+
+    prodotti[indiceModifica].iniziale =
+        nuovaIniziale;
+
+
+    /*
+       Quando cambi la quantità iniziale,
+       la giacenza viene impostata
+       al nuovo valore.
+    */
+
+    prodotti[indiceModifica].quantita =
+        nuovaIniziale;
+
+
+    prodotti[indiceModifica].prezzo =
+        nuovoPrezzo;
+
+
+    salva();
+
+    mostraProdotti();
+
+    chiudiModifica();
+
+}
+
+
+
+/* ==================================
+   CHIUDI MODIFICA
+================================== */
+
+function chiudiModifica() {
+
+    document.getElementById(
+        "popupModifica"
+    ).style.display =
+        "none";
+
+
+    indiceModifica = null;
+
+}
+
+
+
+/* ==================================
+   AGGIUNGI PRODOTTO
+================================== */
+
+function apriPopup() {
+
+
+    document.getElementById(
+        "popup"
+    ).style.display =
+        "flex";
+
+
+    document.getElementById(
+        "nomeProdotto"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "quantitaProdotto"
+    ).value =
+        "0";
+
+
+    document.getElementById(
+        "prezzoProdotto"
+    ).value =
+        "0";
+
+
+    document.getElementById(
+        "nomeProdotto"
+    ).focus();
+
+}
+
+
+
+function chiudiPopup() {
+
+    document.getElementById(
+        "popup"
+    ).style.display =
+        "none";
+
+}
+
+
+
+function aggiungiProdotto() {
+
+
+    const nome =
+        document.getElementById(
+            "nomeProdotto"
+        ).value.trim();
+
+
+    const categoria =
+        document.getElementById(
+            "categoriaProdotto"
+        ).value;
+
+
+    let quantita =
+        parseInt(
+            document.getElementById(
+                "quantitaProdotto"
+            ).value
+        );
+
+
+    let prezzo =
+        parseFloat(
+            document.getElementById(
+                "prezzoProdotto"
+            ).value
+        );
+
+
+    if (nome === "") {
+
+        alert(
+            "Inserisci il nome del prodotto."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        isNaN(quantita) ||
+        quantita < 0
+    ) {
+
+        quantita = 0;
+
+    }
+
+
+    if (
+        isNaN(prezzo) ||
+        prezzo < 0
+    ) {
+
+        prezzo = 0;
+
+    }
+
+
+    const esistente =
+        prodotti.some(
+            prodotto =>
+                prodotto.nome.toLowerCase() ===
+                nome.toLowerCase()
+        );
+
+
+    if (esistente) {
+
+        alert(
+            "Questo prodotto esiste già."
+        );
+
+        return;
+
+    }
+
+
+    prodotti.push({
+
+        nome: nome,
+
+        categoria: categoria,
+
+        quantita: quantita,
+
+        iniziale: quantita,
+
+        prezzo: prezzo,
+
+        personalizzato: true
+
+    });
+
+
+    salva();
+
+    mostraProdotti();
+
+    chiudiPopup();
+
+}
+
+
+
+/* ==================================
+   ELIMINA PRODOTTO
+================================== */
+
+function eliminaProdotto(indice) {
+
+
+    const prodotto =
+        prodotti[indice];
+
+
+    const conferma =
+        confirm(
+            "Vuoi eliminare " +
+            prodotto.nome +
+            "?"
+        );
+
+
+    if (!conferma) {
+
+        return;
+
+    }
+
+
+    prodotti.splice(
+        indice,
+        1
+    );
+
+
+    salva();
+
+    mostraProdotti();
+
+}
+
+
+
+/* ==================================
+   CHIUDI POPUP CLICCANDO FUORI
+================================== */
+
+document
+    .getElementById("popup")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                chiudiPopup();
+
+            }
+
+        }
+    );
+
+
+document
+    .getElementById("popupModifica")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                chiudiModifica();
+
+            }
+
+        }
+    );
+
+
+
+/* ==================================
+   AVVIO
+================================== */
+
+mostraProdotti();
+
+</script>
+
+</body>
+</html>
