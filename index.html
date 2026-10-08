@@ -718,6 +718,16 @@ header h1 {
 
         </div>
 
+        <div class="riepilogo-riga">
+
+            <span>🍸 Alcolici</span>
+
+            <strong id="totale-alcolici">
+                €0,00
+            </strong>
+
+        </div>
+
 
         <div class="riepilogo-riga">
 
@@ -829,6 +839,10 @@ header h1 {
 
                 <option value="Acqua">
                     💧 Acqua
+                </option>
+
+                <option value="Alcolici">
+                    🍸 Alcolici
                 </option>
 
                 <option value="Altro">
@@ -944,6 +958,10 @@ header h1 {
                     💧 Acqua
                 </option>
 
+                <option value="Alcolici">
+                    🍸 Alcolici
+                </option>
+
                 <option value="Altro">
                     📦 Altro
                 </option>
@@ -1018,100 +1036,207 @@ header h1 {
 
 let prodotti = [
 
+    // =========================
+    // BIRRE
+    // =========================
+
     {
         nome: "Dreher",
         categoria: "Birre",
-        quantita: 12,
-        iniziale: 12,
-        prezzo: 4.00
+        quantita: 36,
+        iniziale: 36,
+        prezzo: 1.50
+    },
+
+    {
+        nome: "Corona",
+        categoria: "Birre",
+        quantita: 6,
+        iniziale: 6,
+        prezzo: 3.00
+    },
+
+    {
+        nome: "Analcolica",
+        categoria: "Birre",
+        quantita: 6,
+        iniziale: 6,
+        prezzo: 2.00
     },
 
     {
         nome: "Beck's",
         categoria: "Birre",
-        quantita: 8,
-        iniziale: 8,
-        prezzo: 4.00
+        quantita: 18,
+        iniziale: 18,
+        prezzo: 2.00
     },
 
     {
         nome: "Heineken",
         categoria: "Birre",
-        quantita: 15,
-        iniziale: 15,
-        prezzo: 4.00
+        quantita: 12,
+        iniziale: 12,
+        prezzo: 2.00
     },
 
     {
-        nome: "Peroni",
+        nome: "Nastro",
         categoria: "Birre",
-        quantita: 10,
-        iniziale: 10,
-        prezzo: 4.00
+        quantita: 18,
+        iniziale: 18,
+        prezzo: 2.00
     },
 
     {
-        nome: "Coca-Cola",
-        categoria: "Bibite",
-        quantita: 20,
-        iniziale: 20,
-        prezzo: 3.00
-    },
-
-    {
-        nome: "Coca-Cola Zero",
-        categoria: "Bibite",
+        nome: "Bjorne",
+        categoria: "Birre",
         quantita: 12,
         iniziale: 12,
         prezzo: 3.00
     },
 
     {
-        nome: "Fanta",
-        categoria: "Bibite",
-        quantita: 14,
-        iniziale: 14,
+        nome: "Leffe",
+        categoria: "Birre",
+        quantita: 12,
+        iniziale: 12,
         prezzo: 3.00
     },
 
     {
-        nome: "Sprite",
-        categoria: "Bibite",
-        quantita: 10,
-        iniziale: 10,
+        nome: "Ceres",
+        categoria: "Birre",
+        quantita: 12,
+        iniziale: 12,
         prezzo: 3.00
+    },
+
+    {
+        nome: "Tennents",
+        categoria: "Birre",
+        quantita: 12,
+        iniziale: 12,
+        prezzo: 3.00
+    },
+
+
+    // =========================
+    // BIBITE
+    // =========================
+
+    {
+        nome: "Estate Limone",
+        categoria: "Bibite",
+        quantita: 5,
+        iniziale: 5,
+        prezzo: 2.00
+    },
+
+    {
+        nome: "Estate Pesca",
+        categoria: "Bibite",
+        quantita: 5,
+        iniziale: 5,
+        prezzo: 2.00
+    },
+
+    {
+        nome: "Coca-Cola",
+        categoria: "Bibite",
+        quantita: 5,
+        iniziale: 5,
+        prezzo: 2.00
+    },
+
+    {
+        nome: "Crodino",
+        categoria: "Bibite",
+        quantita: 18,
+        iniziale: 18,
+        prezzo: 2.00
+    },
+
+    {
+        nome: "Campari",
+        categoria: "Alcolici",
+        quantita: 18,
+        iniziale: 18,
+        prezzo: 2.00
     },
 
     {
         nome: "Schweppes Tonica",
         categoria: "Bibite",
-        quantita: 8,
-        iniziale: 8,
-        prezzo: 3.00
+        quantita: 7,
+        iniziale: 7,
+        prezzo: 1.50
     },
 
     {
-        nome: "Red Bull",
+        nome: "Schweppes Lemon",
         categoria: "Bibite",
-        quantita: 15,
-        iniziale: 15,
-        prezzo: 4.00
-    },
-
-    {
-        nome: "Acqua Naturale",
-        categoria: "Acqua",
-        quantita: 30,
-        iniziale: 30,
+        quantita: 7,
+        iniziale: 7,
         prezzo: 1.50
     },
 
     {
-        nome: "Acqua Frizzante",
-        categoria: "Acqua",
-        quantita: 25,
-        iniziale: 25,
+        nome: "Gassosa",
+        categoria: "Bibite",
+        quantita: 7,
+        iniziale: 7,
         prezzo: 1.50
+    },
+
+    {
+        nome: "Brasilena",
+        categoria: "Bibite",
+        quantita: 28,
+        iniziale: 28,
+        prezzo: 1.50
+    },
+
+    {
+        nome: "Powerade",
+        categoria: "Bibite",
+        quantita: 10,
+        iniziale: 10,
+        prezzo: 2.00
+    },
+
+
+    // =========================
+    // ACQUA
+    // =========================
+
+    {
+        nome: "Acqua",
+        categoria: "Acqua",
+        quantita: 21,
+        iniziale: 21,
+        prezzo: 1.00
+    },
+
+
+    // =========================
+    // ALTRO
+    // =========================
+
+    {
+        nome: "Patatine",
+        categoria: "Altro",
+        quantita: 40,
+        iniziale: 40,
+        prezzo: 1.50
+    },
+
+    {
+        nome: "Caffè",
+        categoria: "Altro",
+        quantita: 20,
+        iniziale: 20,
+        prezzo: 1.00
     }
 
 ];
@@ -1122,7 +1247,7 @@ let prodotti = [
 ========================= */
 
 const datiSalvati =
-    localStorage.getItem("prodottiBar");
+    localStorage.getItem("prodottiBarCapassoV3");
 
 
 if (datiSalvati !== null) {
@@ -1187,7 +1312,7 @@ prodotti.forEach(prodotto => {
 function salva() {
 
     localStorage.setItem(
-        "prodottiBar",
+        "prodottiBarCapassoV2",
         JSON.stringify(prodotti)
     );
 
@@ -1217,6 +1342,16 @@ function euro(valore) {
    MOSTRA PRODOTTI
 ========================= */
 
+function correggiCategorie() {
+    if (Array.isArray(prodotti)) {
+        prodotti.forEach(p => {
+            if (p.nome && p.nome.trim().toLowerCase() === "campari") {
+                p.categoria = "Alcolici";
+            }
+        });
+    }
+}
+
 function mostraProdotti() {
 
 
@@ -1233,6 +1368,7 @@ function mostraProdotti() {
         "Birre",
         "Bibite",
         "Acqua",
+        "Alcolici",
         "Altro"
     ];
 
@@ -1285,6 +1421,12 @@ function mostraProdotti() {
         else if (categoria === "Acqua") {
 
             titolo = "💧 Acqua";
+
+        }
+
+        else if (categoria === "Alcolici") {
+
+            titolo = "🍸 Alcolici";
 
         }
 
@@ -1495,7 +1637,9 @@ function modifica(
 
     salva();
 
-    mostraProdotti();
+    correggiCategorie();
+salvaProdotti();
+mostraProdotti();
 
 }
 
@@ -1513,6 +1657,8 @@ function aggiornaRiepilogo() {
     let bibite = 0;
 
     let acqua = 0;
+
+    let alcolici = 0;
 
     let altro = 0;
 
@@ -1562,6 +1708,14 @@ function aggiornaRiepilogo() {
 
         }
 
+        else if (
+            prodotto.categoria === "Alcolici"
+        ) {
+
+            alcolici += incasso;
+
+        }
+
         else {
 
             altro += incasso;
@@ -1575,6 +1729,7 @@ function aggiornaRiepilogo() {
         birre +
         bibite +
         acqua +
+        alcolici +
         altro;
 
 
@@ -1594,6 +1749,11 @@ function aggiornaRiepilogo() {
         "totale-acqua"
     ).textContent =
         euro(acqua);
+
+    document.getElementById(
+        "totale-alcolici"
+    ).textContent =
+        euro(alcolici);
 
 
     document.getElementById(
