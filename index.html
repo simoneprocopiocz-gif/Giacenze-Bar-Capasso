@@ -1,556 +1,644 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <title>Giacenze Bar Capasso</title>
+<title>Giacenze Bar</title>
 
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-        }
+/* =========================
+   BASE
+========================= */
 
+* {
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
+body {
+    margin: 0;
 
-            font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
 
-            background: #f2f2f2;
+    background: #f2f2f2;
 
-            color: #222;
-        }
+    color: #222;
+}
 
 
-        /* =========================
-           HEADER
-        ========================= */
+/* =========================
+   HEADER
+========================= */
 
-        header {
-            background: #222;
+header {
 
-            color: white;
+    background: #222;
 
-            text-align: center;
+    color: white;
 
-            padding: 25px 10px;
-        }
+    text-align: center;
 
+    padding: 25px 10px;
+}
 
-        header h1 {
-            margin: 0 0 15px 0;
+header h1 {
 
-            font-size: 26px;
-        }
+    margin: 0 0 15px 0;
 
+    font-size: 26px;
+}
 
-        .reset-btn {
-            background: #ffc107;
+.reset-btn {
 
-            color: #222;
+    background: #ffc107;
 
-            border: none;
+    color: #222;
 
-            border-radius: 8px;
+    border: none;
 
-            padding: 10px 16px;
+    border-radius: 8px;
 
-            font-weight: bold;
+    padding: 10px 16px;
 
-            cursor: pointer;
-        }
+    font-weight: bold;
 
+    cursor: pointer;
+}
 
-        .reset-btn:hover {
-            background: #e0a800;
-        }
+.reset-btn:hover {
 
+    background: #e0a800;
+}
 
-        /* =========================
-           CONTAINER
-        ========================= */
 
-        .container {
-            max-width: 850px;
+/* =========================
+   CONTAINER
+========================= */
 
-            margin: 25px auto;
+.container {
 
-            padding: 0 15px;
-        }
+    max-width: 850px;
 
+    margin: 25px auto;
 
-        /* =========================
-           CATEGORIE
-        ========================= */
+    padding: 0 15px;
+}
 
-        .categoria {
-            margin-bottom: 30px;
-        }
 
+/* =========================
+   CATEGORIA
+========================= */
 
-        .categoria h2 {
-            font-size: 21px;
+.categoria {
 
-            margin-bottom: 12px;
-        }
+    margin-bottom: 30px;
+}
 
+.categoria h2 {
 
-        /* =========================
-           PRODOTTO
-        ========================= */
+    font-size: 21px;
 
-        .prodotto {
-            background: white;
+    margin-bottom: 12px;
+}
 
-            border-radius: 10px;
 
-            padding: 15px;
+/* =========================
+   PRODOTTO
+========================= */
 
-            margin-bottom: 10px;
+.prodotto {
 
-            display: flex;
+    background: white;
 
-            align-items: center;
+    border-radius: 10px;
 
-            justify-content: space-between;
+    padding: 15px;
 
-            gap: 15px;
+    margin-bottom: 10px;
 
-            box-shadow:
-                0 2px 6px rgba(0,0,0,0.08);
-        }
+    display: flex;
 
+    align-items: center;
 
-        .info-prodotto {
-            flex: 1;
+    justify-content: space-between;
 
-            min-width: 120px;
-        }
+    gap: 15px;
 
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.08);
+}
 
-        .nome {
-            font-size: 18px;
 
-            font-weight: bold;
+/* informazioni */
 
-            margin-bottom: 5px;
-        }
+.info-prodotto {
 
+    flex: 1;
 
-        .prezzo {
-            color: #198754;
+    min-width: 120px;
+}
 
-            font-size: 14px;
 
-            font-weight: bold;
-        }
+.nome {
 
+    font-size: 18px;
 
-        .azioni {
-            display: flex;
+    font-weight: bold;
 
-            align-items: center;
+    margin-bottom: 5px;
+}
 
-            gap: 7px;
 
-            flex-wrap: wrap;
+.prezzo {
 
-            justify-content: flex-end;
-        }
+    color: #198754;
 
+    font-size: 14px;
 
-        .iniziale {
-            color: #777;
+    font-weight: bold;
+}
 
-            font-size: 14px;
 
-            font-weight: bold;
+/* azioni */
 
-            white-space: nowrap;
-        }
+.azioni {
 
+    display: flex;
 
-        .modifica {
-            width: 30px;
+    align-items: center;
 
-            height: 30px;
+    gap: 7px;
 
-            border: none;
+    flex-wrap: wrap;
 
-            border-radius: 7px;
+    justify-content: flex-end;
+}
 
-            background: #e9ecef;
 
-            cursor: pointer;
+.iniziale {
 
-            font-size: 15px;
-        }
+    color: #777;
 
+    font-size: 14px;
 
-        .modifica:hover {
-            background: #dee2e6;
-        }
+    font-weight: bold;
 
+    white-space: nowrap;
+}
 
-        .controlli {
-            display: flex;
 
-            align-items: center;
+/* =========================
+   PULSANTE MODIFICA
+========================= */
 
-            gap: 6px;
-        }
+.modifica {
 
+    width: 30px;
 
-        .controlli button {
-            width: 40px;
+    height: 30px;
 
-            height: 40px;
+    border: none;
 
-            border: none;
+    border-radius: 7px;
 
-            border-radius: 8px;
+    background: #e9ecef;
 
-            color: white;
+    cursor: pointer;
 
-            font-size: 24px;
+    font-size: 15px;
+}
 
-            font-weight: bold;
+.modifica:hover {
 
-            cursor: pointer;
-        }
+    background: #dee2e6;
+}
 
 
-        .controlli button:active {
-            transform: scale(0.92);
-        }
+/* =========================
+   CONTROLLI
+========================= */
 
+.controlli {
 
-        .meno {
-            background: #dc3545;
-        }
+    display: flex;
 
+    align-items: center;
 
-        .piu {
-            background: #198754;
-        }
+    gap: 6px;
+}
 
 
-        .quantita {
-            width: 40px;
+.controlli button {
 
-            text-align: center;
+    width: 40px;
 
-            font-size: 20px;
+    height: 40px;
 
-            font-weight: bold;
-        }
+    border: none;
 
+    border-radius: 8px;
 
-        .vendute {
-            color: #777;
+    color: white;
 
-            font-size: 13px;
+    font-size: 24px;
 
-            min-width: 65px;
+    font-weight: bold;
 
-            text-align: center;
-        }
+    cursor: pointer;
+}
 
 
-        .vendute strong {
-            color: #dc3545;
+.controlli button:active {
 
-            font-size: 15px;
-        }
+    transform: scale(0.92);
+}
 
 
-        .incasso {
-            min-width: 75px;
+.meno {
 
-            text-align: right;
+    background: #dc3545;
+}
 
-            font-weight: bold;
 
-            color: #198754;
-        }
+.piu {
 
+    background: #198754;
+}
 
-        .elimina {
-            width: 30px !important;
 
-            height: 30px !important;
+.quantita {
 
-            background: #dc3545 !important;
+    width: 40px;
 
-            font-size: 15px !important;
-        }
+    text-align: center;
 
+    font-size: 20px;
 
-        /* =========================
-           AGGIUNGI
-        ========================= */
+    font-weight: bold;
+}
 
-        .aggiungi-container {
-            text-align: center;
 
-            margin: 30px 0;
-        }
+/* =========================
+   VENDUTE
+========================= */
 
+.vendute {
 
-        .btn-aggiungi {
-            background: #0d6efd;
+    color: #777;
 
-            color: white;
+    font-size: 13px;
 
-            border: none;
+    min-width: 65px;
 
-            border-radius: 10px;
+    text-align: center;
+}
 
-            padding: 13px 22px;
 
-            font-size: 16px;
+.vendute strong {
 
-            font-weight: bold;
+    color: #dc3545;
 
-            cursor: pointer;
-        }
+    font-size: 15px;
+}
 
 
-        .btn-aggiungi:hover {
-            background: #0b5ed7;
-        }
+/* =========================
+   INCASSO
+========================= */
 
+.incasso {
 
-        /* =========================
-           RIEPILOGO
-        ========================= */
+    min-width: 75px;
 
-        .riepilogo {
-            background: #222;
+    text-align: right;
 
-            color: white;
+    font-weight: bold;
 
-            border-radius: 12px;
+    color: #198754;
+}
 
-            padding: 20px;
 
-            margin-top: 35px;
+/* =========================
+   CESTINO
+========================= */
 
-            margin-bottom: 25px;
-        }
+.elimina {
 
+    width: 32px !important;
 
-        .riepilogo h2 {
-            margin-top: 0;
+    height: 32px !important;
 
-            text-align: center;
+    background: #dc3545 !important;
 
-            font-size: 22px;
-        }
+    color: white;
 
+    border: none;
 
-        .riepilogo-riga {
-            display: flex;
+    border-radius: 7px;
 
-            justify-content: space-between;
+    cursor: pointer;
 
-            padding: 9px 0;
+    font-size: 15px !important;
+}
 
-            border-bottom: 1px solid #444;
+.elimina:hover {
 
-            font-size: 15px;
-        }
+    background: #bb2d3b !important;
+}
 
 
-        .riepilogo-riga:last-child {
-            border-bottom: none;
-        }
+/* =========================
+   AGGIUNGI
+========================= */
 
+.aggiungi-container {
 
-        .totale {
-            font-size: 22px;
+    text-align: center;
 
-            font-weight: bold;
+    margin: 30px 0;
+}
 
-            color: #ffc107;
 
-            margin-top: 12px;
+.btn-aggiungi {
 
-            padding-top: 15px;
+    background: #0d6efd;
 
-            border-top: 2px solid #555;
-        }
+    color: white;
 
+    border: none;
 
-        /* =========================
-           POPUP
-        ========================= */
+    border-radius: 10px;
 
-        .popup {
-            display: none;
+    padding: 13px 22px;
 
-            position: fixed;
+    font-size: 16px;
 
-            top: 0;
+    font-weight: bold;
 
-            left: 0;
+    cursor: pointer;
+}
 
-            width: 100%;
 
-            height: 100%;
+.btn-aggiungi:hover {
 
-            background: rgba(0,0,0,0.5);
+    background: #0b5ed7;
+}
 
-            align-items: center;
 
-            justify-content: center;
+/* =========================
+   RIEPILOGO
+========================= */
 
-            padding: 20px;
+.riepilogo {
 
-            z-index: 1000;
-        }
+    background: #222;
 
+    color: white;
 
-        .popup-box {
-            background: white;
+    border-radius: 12px;
 
-            width: 100%;
+    padding: 20px;
 
-            max-width: 420px;
+    margin-top: 35px;
 
-            border-radius: 12px;
+    margin-bottom: 25px;
+}
 
-            padding: 25px;
 
-            box-shadow:
-                0 5px 20px rgba(0,0,0,0.3);
-        }
+.riepilogo h2 {
 
+    margin-top: 0;
 
-        .popup-box h2 {
-            margin-top: 0;
+    text-align: center;
 
-            margin-bottom: 20px;
-        }
+    font-size: 22px;
+}
 
 
-        .campo {
-            margin-bottom: 15px;
-        }
+.riepilogo-riga {
 
+    display: flex;
 
-        .campo label {
-            display: block;
+    justify-content: space-between;
 
-            margin-bottom: 6px;
+    padding: 9px 0;
 
-            font-weight: bold;
-        }
+    border-bottom: 1px solid #444;
 
+    font-size: 15px;
+}
 
-        .campo input,
-        .campo select {
-            width: 100%;
 
-            padding: 12px;
+.riepilogo-riga:last-child {
 
-            border: 1px solid #ccc;
+    border-bottom: none;
+}
 
-            border-radius: 7px;
 
-            font-size: 16px;
-        }
+.totale {
 
+    font-size: 22px;
 
-        .popup-buttons {
-            display: flex;
+    font-weight: bold;
 
-            gap: 10px;
+    color: #ffc107;
 
-            margin-top: 20px;
-        }
+    margin-top: 12px;
 
+    padding-top: 15px;
 
-        .popup-buttons button {
-            flex: 1;
+    border-top: 2px solid #555;
+}
 
-            padding: 12px;
 
-            border: none;
+/* =========================
+   POPUP
+========================= */
 
-            border-radius: 7px;
+.popup {
 
-            font-size: 15px;
+    display: none;
 
-            font-weight: bold;
+    position: fixed;
 
-            cursor: pointer;
-        }
+    top: 0;
 
+    left: 0;
 
-        .salva {
-            background: #198754;
+    width: 100%;
 
-            color: white;
-        }
+    height: 100%;
 
+    background: rgba(0,0,0,0.5);
 
-        .annulla {
-            background: #6c757d;
+    align-items: center;
 
-            color: white;
-        }
+    justify-content: center;
 
+    padding: 20px;
 
-        .footer {
-            text-align: center;
+    z-index: 1000;
+}
 
-            color: #777;
 
-            font-size: 13px;
+.popup-box {
 
-            padding: 20px;
-        }
+    background: white;
 
+    width: 100%;
 
-        /* =========================
-           MOBILE
-        ========================= */
+    max-width: 420px;
 
-        @media (max-width: 650px) {
+    border-radius: 12px;
 
-            .prodotto {
-                flex-direction: column;
+    padding: 25px;
 
-                align-items: stretch;
-            }
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.3);
+}
 
 
-            .azioni {
-                justify-content: flex-start;
-            }
+.popup-box h2 {
 
+    margin-top: 0;
 
-            .incasso {
-                min-width: auto;
+    margin-bottom: 20px;
+}
 
-                text-align: left;
-            }
 
+.campo {
 
-            .vendute {
-                min-width: auto;
-            }
+    margin-bottom: 15px;
+}
 
-        }
 
-    </style>
+.campo label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-weight: bold;
+}
+
+
+.campo input,
+.campo select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+}
+
+
+.popup-buttons {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.popup-buttons button {
+
+    flex: 1;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.salva {
+
+    background: #198754;
+
+    color: white;
+}
+
+
+.annulla {
+
+    background: #6c757d;
+
+    color: white;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .prodotto {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .azioni {
+
+        justify-content: flex-start;
+    }
+
+
+    .incasso {
+
+        min-width: auto;
+
+        text-align: left;
+    }
+
+
+    .vendute {
+
+        min-width: auto;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -558,10 +646,13 @@
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-    <h1>🍺 Giacenze Bar Capasso</h1>
-
+    <h1>🍺 Giacenze Bar</h1>
 
     <button
         class="reset-btn"
@@ -578,13 +669,17 @@
 <div class="container">
 
 
-    <!-- PRODOTTI -->
+    <!-- =========================
+         LISTA PRODOTTI
+    ========================= -->
 
     <div id="lista-prodotti"></div>
 
 
 
-    <!-- RIEPILOGO -->
+    <!-- =========================
+         RIEPILOGO
+    ========================= -->
 
     <div class="riepilogo">
 
@@ -660,7 +755,9 @@
 
 
 
-    <!-- AGGIUNGI PRODOTTO -->
+    <!-- =========================
+         AGGIUNGI PRODOTTO
+    ========================= -->
 
     <div class="aggiungi-container">
 
@@ -687,9 +784,9 @@
 
 
 
-<!-- ==================================
-     POPUP NUOVO PRODOTTO
-================================== -->
+<!-- =========================
+     POPUP AGGIUNGI
+========================= -->
 
 <div
     class="popup"
@@ -769,8 +866,7 @@
                 id="prezzoProdotto"
                 value="0"
                 min="0"
-                step="0.01"
-                placeholder="Es. 3.00">
+                step="0.01">
 
         </div>
 
@@ -802,9 +898,9 @@
 
 
 
-<!-- ==================================
+<!-- =========================
      POPUP MODIFICA
-================================== -->
+========================= -->
 
 <div
     class="popup"
@@ -815,7 +911,46 @@
         <h2>✏️ Modifica prodotto</h2>
 
 
-        <p id="nomeModifica"></p>
+        <div class="campo">
+
+            <label>
+                Nome prodotto
+            </label>
+
+            <input
+                type="text"
+                id="nuovoNome">
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Categoria
+            </label>
+
+            <select id="nuovaCategoria">
+
+                <option value="Birre">
+                    🍺 Birre
+                </option>
+
+                <option value="Bibite">
+                    🥤 Bibite
+                </option>
+
+                <option value="Acqua">
+                    💧 Acqua
+                </option>
+
+                <option value="Altro">
+                    📦 Altro
+                </option>
+
+            </select>
+
+        </div>
 
 
         <div class="campo">
@@ -877,9 +1012,9 @@
 <script>
 
 
-/* ==================================
-   PRODOTTI INIZIALI
-================================== */
+/* =========================
+   PRODOTTI DEFAULT
+========================= */
 
 let prodotti = [
 
@@ -888,8 +1023,7 @@ let prodotti = [
         categoria: "Birre",
         quantita: 12,
         iniziale: 12,
-        prezzo: 4.00,
-        personalizzato: false
+        prezzo: 4.00
     },
 
     {
@@ -897,8 +1031,7 @@ let prodotti = [
         categoria: "Birre",
         quantita: 8,
         iniziale: 8,
-        prezzo: 4.00,
-        personalizzato: false
+        prezzo: 4.00
     },
 
     {
@@ -906,8 +1039,7 @@ let prodotti = [
         categoria: "Birre",
         quantita: 15,
         iniziale: 15,
-        prezzo: 4.00,
-        personalizzato: false
+        prezzo: 4.00
     },
 
     {
@@ -915,8 +1047,7 @@ let prodotti = [
         categoria: "Birre",
         quantita: 10,
         iniziale: 10,
-        prezzo: 4.00,
-        personalizzato: false
+        prezzo: 4.00
     },
 
     {
@@ -924,8 +1055,7 @@ let prodotti = [
         categoria: "Bibite",
         quantita: 20,
         iniziale: 20,
-        prezzo: 3.00,
-        personalizzato: false
+        prezzo: 3.00
     },
 
     {
@@ -933,8 +1063,7 @@ let prodotti = [
         categoria: "Bibite",
         quantita: 12,
         iniziale: 12,
-        prezzo: 3.00,
-        personalizzato: false
+        prezzo: 3.00
     },
 
     {
@@ -942,8 +1071,7 @@ let prodotti = [
         categoria: "Bibite",
         quantita: 14,
         iniziale: 14,
-        prezzo: 3.00,
-        personalizzato: false
+        prezzo: 3.00
     },
 
     {
@@ -951,8 +1079,7 @@ let prodotti = [
         categoria: "Bibite",
         quantita: 10,
         iniziale: 10,
-        prezzo: 3.00,
-        personalizzato: false
+        prezzo: 3.00
     },
 
     {
@@ -960,8 +1087,7 @@ let prodotti = [
         categoria: "Bibite",
         quantita: 8,
         iniziale: 8,
-        prezzo: 3.00,
-        personalizzato: false
+        prezzo: 3.00
     },
 
     {
@@ -969,8 +1095,7 @@ let prodotti = [
         categoria: "Bibite",
         quantita: 15,
         iniziale: 15,
-        prezzo: 4.00,
-        personalizzato: false
+        prezzo: 4.00
     },
 
     {
@@ -978,8 +1103,7 @@ let prodotti = [
         categoria: "Acqua",
         quantita: 30,
         iniziale: 30,
-        prezzo: 1.50,
-        personalizzato: false
+        prezzo: 1.50
     },
 
     {
@@ -987,17 +1111,15 @@ let prodotti = [
         categoria: "Acqua",
         quantita: 25,
         iniziale: 25,
-        prezzo: 1.50,
-        personalizzato: false
+        prezzo: 1.50
     }
 
 ];
 
 
-
-/* ==================================
-   CARICAMENTO DATI
-================================== */
+/* =========================
+   CARICA DATI SALVATI
+========================= */
 
 const datiSalvati =
     localStorage.getItem("prodottiBar");
@@ -1030,7 +1152,9 @@ if (datiSalvati !== null) {
 }
 
 
-/* Compatibilità con vecchi prodotti */
+/* =========================
+   COMPATIBILITÀ VECCHIE VERSIONI
+========================= */
 
 prodotti.forEach(prodotto => {
 
@@ -1052,22 +1176,13 @@ prodotti.forEach(prodotto => {
 
     }
 
-
-    if (
-        prodotto.personalizzato === undefined
-    ) {
-
-        prodotto.personalizzato = true;
-
-    }
-
 });
 
 
 
-/* ==================================
+/* =========================
    SALVA
-================================== */
+========================= */
 
 function salva() {
 
@@ -1080,9 +1195,9 @@ function salva() {
 
 
 
-/* ==================================
-   FORMATTA EURO
-================================== */
+/* =========================
+   EURO
+========================= */
 
 function euro(valore) {
 
@@ -1098,9 +1213,9 @@ function euro(valore) {
 
 
 
-/* ==================================
+/* =========================
    MOSTRA PRODOTTI
-================================== */
+========================= */
 
 function mostraProdotti() {
 
@@ -1143,7 +1258,9 @@ function mostraProdotti() {
 
 
         const sezione =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         sezione.className =
@@ -1220,11 +1337,16 @@ function mostraProdotti() {
                     <div class="info-prodotto">
 
                         <div class="nome">
+
                             ${prodotto.nome}
+
                         </div>
 
+
                         <div class="prezzo">
+
                             ${euro(prodotto.prezzo)}
+
                         </div>
 
                     </div>
@@ -1234,14 +1356,16 @@ function mostraProdotti() {
 
 
                         <span class="iniziale">
+
                             (${prodotto.iniziale})
+
                         </span>
 
 
                         <button
                             class="modifica"
                             onclick="apriModifica(${indice})"
-                            title="Modifica quantità e prezzo">
+                            title="Modifica prodotto">
 
                             ✏️
 
@@ -1276,32 +1400,17 @@ function mostraProdotti() {
                             </button>
 
 
-                            ${
-                                prodotto.personalizzato
-                                ?
-
-                                `<button
-                                    class="elimina"
-                                    onclick="eliminaProdotto(${indice})">
-
-                                    🗑
-
-                                </button>`
-
-                                :
-
-                                ""
-                            }
-
-
                         </div>
 
 
                         <span class="vendute">
 
                             Vendute:
+
                             <strong>
+
                                 ${vendute}
+
                             </strong>
 
                         </span>
@@ -1312,6 +1421,16 @@ function mostraProdotti() {
                             ${euro(incasso)}
 
                         </span>
+
+
+                        <button
+                            class="elimina"
+                            onclick="eliminaProdotto(${indice})"
+                            title="Elimina prodotto">
+
+                            🗑
+
+                        </button>
 
 
                     </div>
@@ -1340,9 +1459,9 @@ function mostraProdotti() {
 
 
 
-/* ==================================
+/* =========================
    MODIFICA GIACENZA
-================================== */
+========================= */
 
 function modifica(
     indice,
@@ -1382,9 +1501,9 @@ function modifica(
 
 
 
-/* ==================================
+/* =========================
    RIEPILOGO
-================================== */
+========================= */
 
 function aggiornaRiepilogo() {
 
@@ -1498,9 +1617,9 @@ function aggiornaRiepilogo() {
 
 
 
-/* ==================================
+/* =========================
    RESET GIORNATA
-================================== */
+========================= */
 
 function resetGiornata() {
 
@@ -1535,9 +1654,9 @@ function resetGiornata() {
 
 
 
-/* ==================================
+/* =========================
    MODIFICA PRODOTTO
-================================== */
+========================= */
 
 let indiceModifica = null;
 
@@ -1554,9 +1673,15 @@ function apriModifica(indice) {
 
 
     document.getElementById(
-        "nomeModifica"
-    ).textContent =
+        "nuovoNome"
+    ).value =
         prodotto.nome;
+
+
+    document.getElementById(
+        "nuovaCategoria"
+    ).value =
+        prodotto.categoria;
 
 
     document.getElementById(
@@ -1580,9 +1705,9 @@ function apriModifica(indice) {
 
 
 
-/* ==================================
+/* =========================
    SALVA MODIFICA
-================================== */
+========================= */
 
 function salvaModifica() {
 
@@ -1596,7 +1721,23 @@ function salvaModifica() {
     }
 
 
-    let nuovaIniziale =
+    const prodotto =
+        prodotti[indiceModifica];
+
+
+    const nuovoNome =
+        document.getElementById(
+            "nuovoNome"
+        ).value.trim();
+
+
+    const nuovaCategoria =
+        document.getElementById(
+            "nuovaCategoria"
+        ).value;
+
+
+    const nuovaIniziale =
         parseInt(
             document.getElementById(
                 "nuovaIniziale"
@@ -1613,12 +1754,25 @@ function salvaModifica() {
 
 
     if (
+        nuovoNome === ""
+    ) {
+
+        alert(
+            "Inserisci il nome del prodotto."
+        );
+
+        return;
+
+    }
+
+
+    if (
         isNaN(nuovaIniziale) ||
         nuovaIniziale < 0
     ) {
 
         alert(
-            "Inserisci una quantità valida."
+            "Inserisci una quantità iniziale valida."
         );
 
         return;
@@ -1636,22 +1790,102 @@ function salvaModifica() {
     }
 
 
-    prodotti[indiceModifica].iniziale =
-        nuovaIniziale;
+    /* =========================
+       CONTROLLO DUPLICATI
+    ========================= */
+
+    const duplicato =
+        prodotti.some(
+            (p, i) =>
+
+                i !== indiceModifica &&
+
+                p.nome.toLowerCase() ===
+                nuovoNome.toLowerCase()
+        );
+
+
+    if (duplicato) {
+
+        alert(
+            "Esiste già un prodotto con questo nome."
+        );
+
+        return;
+
+    }
+
+
+    /* =========================
+       CONTROLLA CAMBIO QUANTITÀ
+    ========================= */
+
+    const quantitaInizialeVecchia =
+        prodotto.iniziale;
+
+
+    const quantitaAttuale =
+        prodotto.quantita;
+
+
+    prodotto.nome =
+        nuovoNome;
+
+
+    prodotto.categoria =
+        nuovaCategoria;
+
+
+    prodotto.prezzo =
+        nuovoPrezzo;
 
 
     /*
-       Quando cambi la quantità iniziale,
-       la giacenza viene impostata
-       al nuovo valore.
+       Se la quantità iniziale è cambiata,
+       chiediamo se deve cambiare anche
+       la giacenza attuale.
     */
 
-    prodotti[indiceModifica].quantita =
-        nuovaIniziale;
+    if (
+        nuovaIniziale !==
+        quantitaInizialeVecchia
+    ) {
 
 
-    prodotti[indiceModifica].prezzo =
-        nuovoPrezzo;
+        const conferma =
+            confirm(
+                "Hai modificato la quantità iniziale da " +
+                quantitaInizialeVecchia +
+                " a " +
+                nuovaIniziale +
+                ".\n\n" +
+
+                "Vuoi impostare anche la giacenza attuale a " +
+                nuovaIniziale +
+                "?"
+            );
+
+
+        prodotto.iniziale =
+            nuovaIniziale;
+
+
+        if (conferma) {
+
+            prodotto.quantita =
+                nuovaIniziale;
+
+        }
+
+    }
+
+
+    else {
+
+        prodotto.iniziale =
+            nuovaIniziale;
+
+    }
 
 
     salva();
@@ -1664,11 +1898,12 @@ function salvaModifica() {
 
 
 
-/* ==================================
+/* =========================
    CHIUDI MODIFICA
-================================== */
+========================= */
 
 function chiudiModifica() {
+
 
     document.getElementById(
         "popupModifica"
@@ -1682,9 +1917,9 @@ function chiudiModifica() {
 
 
 
-/* ==================================
+/* =========================
    AGGIUNGI PRODOTTO
-================================== */
+========================= */
 
 function apriPopup() {
 
@@ -1722,6 +1957,7 @@ function apriPopup() {
 
 
 function chiudiPopup() {
+
 
     document.getElementById(
         "popup"
@@ -1763,7 +1999,9 @@ function aggiungiProdotto() {
         );
 
 
-    if (nome === "") {
+    if (
+        nome === ""
+    ) {
 
         alert(
             "Inserisci il nome del prodotto."
@@ -1823,9 +2061,7 @@ function aggiungiProdotto() {
 
         iniziale: quantita,
 
-        prezzo: prezzo,
-
-        personalizzato: true
+        prezzo: prezzo
 
     });
 
@@ -1840,9 +2076,9 @@ function aggiungiProdotto() {
 
 
 
-/* ==================================
+/* =========================
    ELIMINA PRODOTTO
-================================== */
+========================= */
 
 function eliminaProdotto(indice) {
 
@@ -1880,9 +2116,9 @@ function eliminaProdotto(indice) {
 
 
 
-/* ==================================
+/* =========================
    CHIUDI POPUP CLICCANDO FUORI
-================================== */
+========================= */
 
 document
     .getElementById("popup")
@@ -1921,13 +2157,15 @@ document
 
 
 
-/* ==================================
+/* =========================
    AVVIO
-================================== */
+========================= */
 
 mostraProdotti();
 
 </script>
 
+
 </body>
+
 </html>
