@@ -1198,7 +1198,7 @@ let prodotti = [
     },
 
     {
-        nome: "Powerade",
+        nome: "Powered",
         categoria: "Bibite",
         quantita: 10,
         iniziale: 10,
@@ -1312,7 +1312,7 @@ prodotti.forEach(prodotto => {
 function salva() {
 
     localStorage.setItem(
-        "prodottiBarCapassoV2",
+        "prodottiBarCapassoV3",
         JSON.stringify(prodotti)
     );
 
@@ -1605,42 +1605,21 @@ function mostraProdotti() {
    MODIFICA GIACENZA
 ========================= */
 
-function modifica(
-    indice,
-    valore
-) {
+function modifica(indice, delta) {
+    const prodotto = prodotti[indice];
+    if (!prodotto) return;
 
+    const quantitaAttuale = Number(prodotto.quantita) || 0;
+    const quantitaIniziale = Number(prodotto.iniziale) || 0;
+    const variazione = Number(delta) || 0;
 
-    prodotti[indice].quantita +=
-        valore;
-
-
-    if (
-        prodotti[indice].quantita < 0
-    ) {
-
-        prodotti[indice].quantita = 0;
-
-    }
-
-
-    if (
-        prodotti[indice].quantita >
-        prodotti[indice].iniziale
-    ) {
-
-        prodotti[indice].quantita =
-            prodotti[indice].iniziale;
-
-    }
-
+    prodotto.quantita = Math.max(
+        0,
+        Math.min(quantitaIniziale, quantitaAttuale + variazione)
+    );
 
     salva();
-
-    correggiCategorie();
-salvaProdotti();
-mostraProdotti();
-
+    mostraProdotti();
 }
 
 
