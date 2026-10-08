@@ -1027,6 +1027,8 @@ header h1 {
 
 
 
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
 <script>
 
 
@@ -1243,81 +1245,79 @@ let prodotti = [
 
 
 /* =========================
-   CARICA DATI SALVATI
+   FIREBASE REALTIME DATABASE
 ========================= */
 
-const datiSalvati =
-    localStorage.getItem("prodottiBarCapassoV3");
+const firebaseConfig = {
+    apiKey: "AIzaSyDvZBl9zv_RvwgZyqcQ0aWgW-QalIG7r3Y",
+    authDomain: "giacenze-bar-capasso.firebaseapp.com",
+    databaseURL: "https://giacenze-bar-capasso-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "giacenze-bar-capasso",
+    storageBucket: "giacenze-bar-capasso.firebasestorage.app",
+    messagingSenderId: "832105461748",
+    appId: "1:832105461748:web:cd5fa130d6202821c9eba1",
+    measurementId: "G-5M01FGWT9D"
+};
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const prodottiRef = database.ref("prodottiBar");
+
+let databasePronto = false;
 
 
-if (datiSalvati !== null) {
+/* =========================
+   COMPATIBILITÀ DATI
+========================= */
 
-    try {
+function normalizzaProdotti() {
 
-        const dati =
-            JSON.parse(datiSalvati);
+    if (!Array.isArray(prodotti)) {
+        prodotti = [];
+    }
 
+    prodotti.forEach(prodotto => {
 
-        if (Array.isArray(dati)) {
-
-            prodotti = dati;
-
+        if (prodotto.iniziale === undefined) {
+            prodotto.iniziale = Number(prodotto.quantita) || 0;
         }
 
-    }
+        if (prodotto.quantita === undefined) {
+            prodotto.quantita = prodotto.iniziale;
+        }
 
-    catch (errore) {
+        if (prodotto.prezzo === undefined) {
+            prodotto.prezzo = 0;
+        }
 
-        console.log(
-            "Errore caricamento dati."
-        );
+        if (!prodotto.categoria) {
+            prodotto.categoria = "Altro";
+        }
 
-    }
+    });
 
 }
 
 
 /* =========================
-   COMPATIBILITÀ VECCHIE VERSIONI
-========================= */
-
-prodotti.forEach(prodotto => {
-
-    if (
-        prodotto.iniziale === undefined
-    ) {
-
-        prodotto.iniziale =
-            prodotto.quantita;
-
-    }
-
-
-    if (
-        prodotto.prezzo === undefined
-    ) {
-
-        prodotto.prezzo = 0;
-
-    }
-
-});
-
-
-
-/* =========================
-   SALVA
+   SALVA SU FIREBASE
 ========================= */
 
 function salva() {
 
-    localStorage.setItem(
-        "prodottiBarCapassoV3",
-        JSON.stringify(prodotti)
-    );
+    if (!databasePronto) {
+        return;
+    }
+
+    normalizzaProdotti();
+
+    prodottiRef.set(prodotti)
+        .catch(errore => {
+            console.error("Errore salvataggio Firebase:", errore);
+            alert("Impossibile salvare le modifiche. Controlla la connessione.");
+        });
 
 }
-
 
 
 /* =========================
@@ -1343,13 +1343,27 @@ function euro(valore) {
 ========================= */
 
 function correggiCategorie() {
+
+    let modificato = false;
+
     if (Array.isArray(prodotti)) {
+
         prodotti.forEach(p => {
-            if (p.nome && p.nome.trim().toLowerCase() === "campari") {
+
+            if (
+                p.nome &&
+                p.nome.trim().toLowerCase() === "campari" &&
+                p.categoria !== "Alcolici"
+            ) {
                 p.categoria = "Alcolici";
+                modificato = true;
             }
+
         });
+
     }
+
+    return modificato;
 }
 
 function mostraProdotti() {
@@ -2297,10 +2311,55 @@ document
 
 
 /* =========================
-   AVVIO
+   AVVIO CON SINCRONIZZAZIONE FIREBASE
 ========================= */
 
-mostraProdotti();
+prodottiRef.on("value", snapshot => {
+
+    const dati = snapshot.val();
+
+    if (dati === null) {
+
+        normalizzaProdotti();
+        correggiCategorie();
+
+        databasePronto = true;
+
+        prodottiRef.set(prodotti)
+            .catch(errore => {
+                console.error("Errore inizializzazione Firebase:", errore);
+            });
+
+    } else {
+
+        prodotti = Array.isArray(dati)
+            ? dati
+            : Object.values(dati);
+
+        normalizzaProdotti();
+
+        const categoriaCorretta = correggiCategorie();
+
+        databasePronto = true;
+
+        if (categoriaCorretta) {
+            salva();
+        }
+
+    }
+
+    mostraProdotti();
+
+}, errore => {
+
+    console.error("Errore lettura Firebase:", errore);
+
+    alert(
+        "Impossibile collegarsi al database. " +
+        "Controlla la connessione Internet e le regole Firebase."
+    );
+
+});
 
 </script>
 
